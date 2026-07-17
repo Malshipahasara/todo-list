@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient(135deg , #153677,#4e085f);
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        
+        .todo-images{
+           width:100%;
+           max-width: 540px;
+           background:#fff;
+           margin:100px auto 20px;
+           padding:40px 30px 70px;
+           border-radius: 10px;
+
+        }
+        .todo-images h2 {
+            color:#002765;
+            display:flex;
+            align-items: center;
+            margin-bottom: 20px;
+
+        }
+        .todo-images img{
+            width:30px;
+            margin-left: 10px;
+
+        }
+
+        .row{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #edeef0;
+            border-radius: 30px;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+        input{
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 10px;
+
+        }
+        button{
+            border: none;
+            outline: none;
+            padding:16px 50px;
+            background:#ff5945;
+            color: #fff;
+            font-size:  16px;
+            cursor: pointer;
+            border-radius: 40px;
+
+        }
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 75%;
+            padding: 8px;
+        }
+
+        ul li span{
+            position:absolute;
+            right:0;
+            top:5px;
+            width:40px;
+            height:40px;
+            font-size:22px;
+            color:#555;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        ul li span :hover{
+            background: #edeef0;
+        }
+
+        
+
+        ul li{
+           list-style: none;
+           font-size: 17px;
+           padding:12px 8px 12px 50px;
+           user-select: none;
+           cursor: pointer;
+           position: relative;
+        }
+        ul li::before{
+            content:'';
+            position: absolute;
+            height: 28px;
+            width:28px;
+            border-radius: 50%;
+            background-image: url(images/unchecked.png);
+            background-size: cover;
+            background-position: center;
+            top: 12px;
+            left: 8px;
+        }
+
+        ul li.checked{
+            color:#555;
+            text-decoration:line-through;
+
+        }
+
+        ul li.checked::before{
+            background-image: url(images/checked.png);
+
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+ <div class="todo-container">
+    <div class="todo-images">
+        <h2>To-Do List<img src="images/icon.png"></h2>
+        <div class="row">
+         <input type="text" id="input-box" placeholder="add your text">
+         <button onclick="addTask()">Add</button>
+        </div>
+        <div>
+            <ul id="list-container">
+                <!--li class="checked">Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li--->
+            </ul>
+        </div>
+    </div>
+    
+ </div>
+
+
+    <!--input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+
+    <ul id="taskList"></ul-->
+
+
+<script>
+  const inputbox=document.getElementById("input-box");
+  const listcontainer=document.getElementById("list-container");
+  function addTask(){
+      if(inputbox.value==''){
+        alert("You must write something!!");
+      }else{
+        let li=document.createElement("li");
+        li.innerHTML=inputbox.value;
+        listcontainer.appendChild(li);
+        let span=document.createElement("span");
+        span.innerHTML="\u00d7";
+        li.appendChild(span);
+
+      }
+      inputbox.value="";
+      saveData();
+
+
+  }
+  listcontainer.addEventListener("click", function(e){
+    if(e.target.tagName==="LI"){
+        e.target.classList.toggle("checked");
+    }else if(e.target.tagName==="SPAN"){
+         e.target.parentElement.remove();
+    }
+  },false);
+
+  function saveData(){
+    localStorage.setItem("data",list-container.innerHTML);
+  }
+
+  function showTask(){
+    listcontainer.innerHTML=localStorage.getItem("data");
+  }
+</script>
+
+</body>
+</html>

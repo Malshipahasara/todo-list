@@ -1,0 +1,19 @@
+[debug] [2025-12-29T14:01:07.018Z] ----------------------------------------------------------------------
+[debug] [2025-12-29T14:01:07.041Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\amals\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login
+[debug] [2025-12-29T14:01:07.044Z] CLI Version:   15.1.0
+[debug] [2025-12-29T14:01:07.045Z] Platform:      win32
+[debug] [2025-12-29T14:01:07.046Z] Node Version:  v22.14.0
+[debug] [2025-12-29T14:01:07.048Z] Time:          Mon Dec 29 2025 19:31:07 GMT+0530 (India Standard Time)
+[debug] [2025-12-29T14:01:07.049Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-12-29T14:01:07.066Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[info] i  The Firebase CLI’s MCP server feature can optionally make use of Gemini in Firebase. Learn more about Gemini in Firebase and how it uses your data: https://firebase.google.com/docs/gemini-in-firebase#how-gemini-in-firebase-uses-your-data 
+[debug] [2025-12-29T14:01:08.323Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-12-29T14:01:08.325Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+[info] i  Firebase optionally collects CLI and Emulator Suite usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=593680655&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
