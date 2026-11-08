@@ -2,195 +2,293 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List App</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background:linear-gradient(135deg , #153677,#4e085f);
+            background: linear-gradient(135deg, #dff7ff, #f7d9ef);
             display: flex;
             justify-content: center;
-            margin-top: 50px;
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 16px;
         }
 
-        
-        .todo-images{
-           width:100%;
-           max-width: 540px;
-           background:#fff;
-           margin:100px auto 20px;
-           padding:40px 30px 70px;
-           border-radius: 10px;
-
+        .todo-images {
+            width: 100%;
+            max-width: 540px;
+            background: #fff;
+            margin: 40px auto 20px;
+            padding: 40px 30px 30px;
+            border-radius: 10px;
         }
+
         .todo-images h2 {
-            color:#002765;
-            display:flex;
+            color: #002765;
+            display: flex;
             align-items: center;
-            margin-bottom: 20px;
-
+            margin: 0 0 20px;
+            font-size: 28px;
         }
-        .todo-images img{
-            width:30px;
+
+        .todo-images h2 .mark {
+            width: 32px;
+            height: 32px;
             margin-left: 10px;
-
+            border-radius: 8px;
+            background: #ff5945;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
 
-        .row{
+        .row {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: #edeef0;
             border-radius: 30px;
             padding-left: 20px;
-            margin-bottom: 25px;
-        }
-        input{
-            flex: 1;
-            border: none;
-            outline: none;
-            background: transparent;
-            padding: 10px;
-
-        }
-        button{
-            border: none;
-            outline: none;
-            padding:16px 50px;
-            background:#ff5945;
-            color: #fff;
-            font-size:  16px;
-            cursor: pointer;
-            border-radius: 40px;
-
-        }
-        h2 {
-            text-align: center;
+            margin-bottom: 18px;
         }
 
         input {
-            width: 75%;
-            padding: 8px;
+            flex: 1;
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 14px 10px;
+            font-size: 16px;
         }
 
-        ul li span{
-            position:absolute;
-            right:0;
-            top:5px;
-            width:40px;
-            height:40px;
-            font-size:22px;
-            color:#555;
-            line-height: 40px;
-            text-align: center;
-            border-radius: 50%;
+        button {
+            border: none;
+            outline: none;
+            padding: 16px 40px;
+            background: #ff5945;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 40px;
         }
 
-        ul li span :hover{
-            background: #edeef0;
+        button:hover {
+            background: #e04532;
         }
 
-        
-
-        ul li{
-           list-style: none;
-           font-size: 17px;
-           padding:12px 8px 12px 50px;
-           user-select: none;
-           cursor: pointer;
-           position: relative;
+        .status {
+            margin: 0 0 12px;
+            color: #555;
+            font-size: 14px;
         }
-        ul li::before{
-            content:'';
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            list-style: none;
+            font-size: 17px;
+            padding: 12px 48px 12px 50px;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        ul li:hover {
+            background: #f7f7f8;
+        }
+
+        ul li::before {
+            content: "";
             position: absolute;
             height: 28px;
-            width:28px;
+            width: 28px;
             border-radius: 50%;
-            background-image: url(images/unchecked.png);
-            background-size: cover;
-            background-position: center;
-            top: 12px;
+            border: 2px solid #ff5945;
+            box-sizing: border-box;
+            top: 10px;
             left: 8px;
         }
 
-        ul li.checked{
-            color:#555;
-            text-decoration:line-through;
-
-        }
-
-        ul li.checked::before{
-            background-image: url(images/checked.png);
-
-        }
-
-        li.completed {
+        ul li.checked {
+            color: #555;
             text-decoration: line-through;
-            color: gray;
+        }
+
+        ul li.checked::before {
+            content: "✓";
+            background: #ff5945;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            line-height: 28px;
+            text-align: center;
+        }
+
+        ul li span {
+            position: absolute;
+            right: 4px;
+            top: 6px;
+            width: 40px;
+            height: 40px;
+            font-size: 22px;
+            color: #555;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        ul li span:hover {
+            background: #edeef0;
+        }
+
+        .empty {
+            color: #888;
+            text-align: center;
+            padding: 18px 8px 8px;
+            font-size: 15px;
         }
     </style>
 </head>
 <body>
- <div class="todo-container">
-    <div class="todo-images">
-        <h2>To-Do List<img src="images/icon.png"></h2>
-        <div class="row">
-         <input type="text" id="input-box" placeholder="add your text">
-         <button onclick="addTask()">Add</button>
-        </div>
-        <div>
-            <ul id="list-container">
-                <!--li class="checked">Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li--->
-            </ul>
+    <div class="todo-container">
+        <div class="todo-images">
+            <h2>To-Do List <span class="mark" aria-hidden="true">✓</span></h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your task" aria-label="New task">
+                <button type="button" id="add-btn">Add</button>
+            </div>
+            <p class="status" id="status">No tasks yet</p>
+            <ul id="list-container"></ul>
+            <p class="empty" id="empty-note">Type a task and press Add, or hit Enter.</p>
         </div>
     </div>
-    
- </div>
 
+    <script>
+        const inputbox = document.getElementById("input-box");
+        const listcontainer = document.getElementById("list-container");
+        const status = document.getElementById("status");
+        const emptyNote = document.getElementById("empty-note");
+        const STORAGE_KEY = "todo-tasks";
 
-    <!--input type="text" id="taskInput" placeholder="Enter task">
-    <button onclick="addTask()">Add</button>
+        function readTasks() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                return Array.isArray(saved) ? saved : [];
+            } catch (error) {
+                return [];
+            }
+        }
 
-    <ul id="taskList"></ul-->
+        function writeTasks(tasks) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+        }
 
+        function updateStatus() {
+            const tasks = listcontainer.querySelectorAll("li");
+            const done = listcontainer.querySelectorAll("li.checked").length;
+            const total = tasks.length;
 
-<script>
-  const inputbox=document.getElementById("input-box");
-  const listcontainer=document.getElementById("list-container");
-  function addTask(){
-      if(inputbox.value==''){
-        alert("You must write something!!");
-      }else{
-        let li=document.createElement("li");
-        li.innerHTML=inputbox.value;
-        listcontainer.appendChild(li);
-        let span=document.createElement("span");
-        span.innerHTML="\u00d7";
-        li.appendChild(span);
+            if (total === 0) {
+                status.textContent = "No tasks yet";
+                emptyNote.hidden = false;
+                return;
+            }
 
-      }
-      inputbox.value="";
-      saveData();
+            emptyNote.hidden = true;
+            const open = total - done;
+            const openLabel = open === 1 ? "1 open" : open + " open";
+            const doneLabel = done === 1 ? "1 done" : done + " done";
+            if (open === 0) {
+                status.textContent = total === 1 ? "1 task done" : "All " + total + " tasks done";
+                return;
+            }
+            status.textContent = openLabel + " · " + doneLabel;
+        }
 
+        function createTask(text, done) {
+            const li = document.createElement("li");
+            li.textContent = text;
+            if (done) {
+                li.classList.add("checked");
+            }
 
-  }
-  listcontainer.addEventListener("click", function(e){
-    if(e.target.tagName==="LI"){
-        e.target.classList.toggle("checked");
-    }else if(e.target.tagName==="SPAN"){
-         e.target.parentElement.remove();
-    }
-  },false);
+            const span = document.createElement("span");
+            span.textContent = "\u00d7";
+            span.setAttribute("aria-label", "Delete task");
+            li.appendChild(span);
+            return li;
+        }
 
-  function saveData(){
-    localStorage.setItem("data",list-container.innerHTML);
-  }
+        function saveData() {
+            const tasks = Array.from(listcontainer.querySelectorAll("li")).map(function (li) {
+                return {
+                    text: li.childNodes[0].textContent.trim(),
+                    done: li.classList.contains("checked")
+                };
+            });
+            writeTasks(tasks);
+            updateStatus();
+        }
 
-  function showTask(){
-    listcontainer.innerHTML=localStorage.getItem("data");
-  }
-</script>
+        function showTask() {
+            listcontainer.replaceChildren();
+            readTasks().forEach(function (task) {
+                if (!task || typeof task.text !== "string" || task.text.trim() === "") {
+                    return;
+                }
+                listcontainer.appendChild(createTask(task.text, Boolean(task.done)));
+            });
+            updateStatus();
+        }
 
+        function addTask() {
+            const text = inputbox.value.trim();
+            if (text === "") {
+                alert("You must write something!");
+                inputbox.focus();
+                return;
+            }
+
+            listcontainer.appendChild(createTask(text, false));
+            inputbox.value = "";
+            inputbox.focus();
+            saveData();
+        }
+
+        document.getElementById("add-btn").addEventListener("click", addTask);
+
+        inputbox.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                addTask();
+            }
+        });
+
+        listcontainer.addEventListener("click", function (event) {
+            const target = event.target;
+            if (target.tagName === "LI") {
+                target.classList.toggle("checked");
+                saveData();
+            } else if (target.tagName === "SPAN") {
+                target.parentElement.remove();
+                saveData();
+            }
+        });
+
+        showTask();
+    </script>
 </body>
 </html>
